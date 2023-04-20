@@ -11,7 +11,10 @@ class Calculator {
     }
 
     insert(char) {
-        if (this.operator === '') {
+        if(this.operator === '') {
+            if (this.input1 === result){
+                input.value = '';
+            }
             this.input1 += char;
             input.value = this.input1;
         } else {
@@ -21,11 +24,8 @@ class Calculator {
     }
 
     operate(operator) {
-        if (operator === "=" || this.operator !== '') {
-            this.result = this.calculate();
-        } else {
-            this.operator = operator;
-        }
+        this.operator = operator;
+        this.input1 = input.value;
     }
 
     calculate() {
