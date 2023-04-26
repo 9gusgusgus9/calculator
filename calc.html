@@ -13,6 +13,7 @@
         <script>
             var calc = new Calculator();
 			document.addEventListener('keydown', function(event) {
+				event.preventDefault();
 				switch(event.keyCode) {
 					case 8: calc.backspace(); break;
 					case 13: calc.calculate(); break;
