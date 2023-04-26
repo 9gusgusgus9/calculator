@@ -1,7 +1,7 @@
 let input = document.getElementById('input');
 
 class Calculator {
-    input1; input2; operand; result;
+    input1; input2; operand; result; hex;
 
     constructor() {
         this.clear()
@@ -31,6 +31,9 @@ class Calculator {
 
     calculate() {
         this.result = 0;
+        if (this.hex){
+            this.input1 = Number(this.input1).toString(10);
+        }
         switch (this.operator) {
             case "%":
                 if (this.input2 === '') {
@@ -74,6 +77,7 @@ class Calculator {
         this.input2 = '';
         this.operator = '';
         this.result = '0';
+        this.hex = false;
         input.value = this.result;
     }
 
@@ -92,6 +96,14 @@ class Calculator {
     }
 
     enableProgrammerMode(){
-
+        if(this.input1 !== ''){
+            if(this.hex){
+                this.input1 = Number(this.input1).toString(10);
+            } else {
+                this.input1 = Number(this.input1).toString(16);
+                input.value = this.input1;
+                this.hex = true;
+            }
+        }
     }
 }
