@@ -10,7 +10,7 @@ class Calculator {
     insert(char) {
         if(this.operator === '') {
             if (this.input1 === this.result){
-                input.value = '';
+                this.input1 = '';
             }
             this.input1 += char;
             input.value = this.input1;
@@ -30,35 +30,35 @@ class Calculator {
     }
 
     calculate() {
-        let result = 0;
+        this.result = 0;
         switch (this.operator) {
             case "%":
                 if (this.input2 === '') {
-                    result = Number(this.input1) / 100;
+                    this.result = Number(this.input1) / 100;
                 } else {
-                    result = 'Error';
+                    this.result = 'Error';
                 }
                 break;
             default :
                 if(this.input1 !== '' && this.input2 !== ''){
                     switch (this.operator) {
                         case "+":
-                            result = Number(this.input1) + Number(this.input2);
+                            this.result = Number(this.input1) + Number(this.input2);
                             break;
                         case "-":
-                            result = Number(this.input1) - Number(this.input2);
+                            this.result = Number(this.input1) - Number(this.input2);
                             break;
                         case "*":
-                            result = Number(this.input1) * Number(this.input2);
+                            this.result = Number(this.input1) * Number(this.input2);
                             break;
                         case "/":
-                            result = Number(this.input1) / Number(this.input2);
+                            this.result = Number(this.input1) / Number(this.input2);
                         break;
                     }
                 }
         }
-        if (result !== 'Error') {
-            this.input1 = result;
+        if (this.result !== 'Error') {
+            this.input1 = this.result;
             this.input2 = '';
             this.operator = '';
             this.lastRes = true;
@@ -66,7 +66,7 @@ class Calculator {
             this.clear();
             this.lastRes = false;
         }
-        input.value = result;
+        input.value = this.result;
     }
 
     clear() {
