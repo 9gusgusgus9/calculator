@@ -1,7 +1,7 @@
 let input = document.getElementById('input');
 
 class Calculator {
-    input1; input2; operand; result; lastRes;
+    input1; input2; operand; result;
 
     constructor() {
         this.clear()
@@ -58,13 +58,13 @@ class Calculator {
                 }
         }
         if (this.result !== 'Error') {
-            this.input1 = this.result;
+            this.result = Number(this.result.toFixed(7));
+            this.result = String(this.result)
+            this.input1 = this.result
             this.input2 = '';
             this.operator = '';
-            this.lastRes = true;
         } else {
             this.clear();
-            this.lastRes = false;
         }
         input.value = this.result;
     }
@@ -74,7 +74,6 @@ class Calculator {
         this.input2 = '';
         this.operator = '';
         this.result = '0';
-        this.lastRes = false;
         input.value = this.result;
     }
 
