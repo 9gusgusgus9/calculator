@@ -12,6 +12,43 @@
         <script src="./script.js"></script>
         <script>
             var calc = new Calculator();
+			document.addEventListener('keydown', function(event) {
+				switch(event.keyCode) {
+					case 8: calc.backspace(); break;
+					case 13: calc.calculate(); break;
+					case 27: calc.clear(); break;
+					case 48: calc.insert('0'); break;
+					case 49: calc.insert('1'); break;
+					case 50: calc.insert('2'); break;
+					case 51: calc.insert('3'); break;
+					case 52: calc.insert('4'); break;
+					case 53: calc.insert('5'); break;
+					case 54: calc.insert('6'); break;
+					case 55: calc.insert('7'); break;
+					case 56: calc.insert('8'); break;
+					case 57: calc.insert('9'); break;
+					case 96: calc.insert('0'); break;
+					case 97: calc.insert('1'); break;
+					case 98: calc.insert('2'); break;
+					case 99: calc.insert('3'); break;
+					case 100: calc.insert('4'); break;
+					case 101: calc.insert('5'); break;
+					case 102: calc.insert('6'); break;
+					case 103: calc.insert('7'); break;
+					case 104: calc.insert('8'); break;
+					case 105: calc.insert('9'); break;
+					case 106: calc.operate('*'); break;
+					case 107: calc.operate('+'); break;
+					case 109: calc.operate('-'); break;
+					case 110: calc.insert('.'); break;
+					case 111: calc.operate('/'); break;
+					case 187: calc.operate('+'); break;
+					case 189: calc.operate('-'); break;
+					case 191: calc.operate('/'); break;
+					case 220: calc.operate('%'); break;
+					case 222: calc.insert('.'); break;
+				}
+			});
         </script>
 		<div class="buttons">
 			<button class="button" onclick="calc.clear()">C</button>
