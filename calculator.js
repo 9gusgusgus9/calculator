@@ -113,13 +113,19 @@ class Calculator {
         }
     }
 /*
-    getCurrencyExchange(){
+    exchange(){
         const xhttp = new XMLHttpRequest();
         xhttp.open("GET", "https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/latestRates?lang={}");
         xhttp.setRequestHeader("Accept", "application/json");
+        xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+
         xhttp.onload = function() {
             if (this.status === 200) {
-                console.log(this.responseText);
+                console.log("ciao");
+            } else {
+                console.log("error");
             }
         }
         xhttp.send();
@@ -139,7 +145,7 @@ class Calculator {
             input.value = this.input1;    
         }
     }
-
+    
     enableProgrammerMode(){
         if(this.input1 !== ''){
             if(this.hex){
