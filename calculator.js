@@ -1,7 +1,9 @@
+const EURtoUSD = 0.9058;
+const USDtoEUR = 1.1039;
 let input = document.getElementById('input');
 
 class Calculator {
-    input1; input2; operand; result; hex;
+    input1; input2; operand; result; hex; converted;
 
     constructor() {
         this.clear()
@@ -89,6 +91,7 @@ class Calculator {
         this.operator = '';
         this.result = '0';
         this.hex = false;
+        this.converted = false;
     }
 
     clear() {
@@ -109,9 +112,32 @@ class Calculator {
             }
         }
     }
-
-    excange(){
-
+/*
+    getCurrencyExchange(){
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://tassidicambio.bancaditalia.it/terzevalute-wf-web/rest/v1.0/latestRates?lang={}");
+        xhttp.setRequestHeader("Accept", "application/json");
+        xhttp.onload = function() {
+            if (this.status === 200) {
+                console.log(this.responseText);
+            }
+        }
+        xhttp.send();
+    }
+*/
+    exchange(){
+        if(this.input1 !== ''){
+            if(this.converted){
+                this.input1 = Number(this.input1 * USDtoEUR).toFixed(2);
+                this.converted = false;
+                document.getElementsByClassName('currency')[0].innerHTML = '$';
+            } else {
+                this.input1 = Number(this.input1 * EURtoUSD).toFixed(2);
+                this.converted = true;
+                document.getElementsByClassName('currency')[0].innerHTML = '€';
+            }
+            input.value = this.input1;    
+        }
     }
 
     enableProgrammerMode(){
